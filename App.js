@@ -4,14 +4,18 @@ import React from 'react';
 import AppNavigator from './src/navigation/app-navigator';
 import {NavigationContainer} from '@react-navigation/native';
 import ScreenWrapper from './src/components/common/ScreenWrapper';
+import {Provider} from 'react-redux';
+import {store} from './src/redux/store';
 
 const App = () => {
   return (
-    <NavigationContainer>
-      <ScreenWrapper>
-        <AppNavigator />
-      </ScreenWrapper>
-    </NavigationContainer>
+    <Provider store={store}>
+      <NavigationContainer>
+        <ScreenWrapper>
+          <AppNavigator />
+        </ScreenWrapper>
+      </NavigationContainer>
+    </Provider>
   );
 };
 
