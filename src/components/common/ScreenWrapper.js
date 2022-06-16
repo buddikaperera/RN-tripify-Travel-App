@@ -11,10 +11,10 @@ export default ScreenWrapper;
 const styles = StyleSheet.create({
   container: {
     paddingTop: Platform.OS === 'ios' ? 32 : 0,
-    paddingHorizontal: 22,
-    paddingTop: 15,
-    paddingBottom: 32,
-    backgroundColor: COLORS.BACKOUND,
+    paddingHorizontal: 15,
+    paddingTop: 8,
+    paddingBottom: 12,
+    backgroundColor: COLORS.GRARY2,
     minHeight: '100%',
   },
 });
