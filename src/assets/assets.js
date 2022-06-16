@@ -4,7 +4,7 @@ export const IMAGES = {
 };
 
 export const ICONS = {
-  BACK: require('./icons/back-arrow.png'),
+  BACK_BUTTON: require('./icons/back-arrow.png'),
 };
 
 export const THUMBNAILS = {

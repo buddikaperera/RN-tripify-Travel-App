@@ -11,4 +11,5 @@ export const COLORS = {
   ICEBLUE: '#0D65D8',
   WHITE: '#FFF',
   BLACK: 'rgba(0,0,0,0.8)',
+  PEACH: '#FF8083',
 };
