@@ -12,6 +12,7 @@ import {SafeAreaView} from 'react-native-safe-area-context';
 import {COLORS} from '../theme/theme';
 import {IMAGES, RANDOM_THUMBNAIL, THUMBNAILS} from '../assets/assets';
 import EmptyList from '../components/EmptyList';
+import {useSelector} from 'react-redux';
 
 const MOCKDATA = [
   {
@@ -53,6 +54,7 @@ const MOCKDATA = [
 ];
 
 const Home = ({navigation}) => {
+  const tripList = useSelector(state => state.trips.trips);
   return (
     <ScreenWrapper>
       <View style={styles.homeHeader}>
@@ -73,7 +75,8 @@ const Home = ({navigation}) => {
 
       <View style={styles.listWrapper}>
         <FlatList
-          data={MOCKDATA}
+          //data={MOCKDATA}
+          data={tripList}
           showsVerticalScrollIndicator={false}
           columnWrapperStyle={styles.tripsList}
           keyExtractor={item => item.id}

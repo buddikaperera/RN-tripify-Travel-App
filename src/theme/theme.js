@@ -33,6 +33,7 @@ export const COLORS = {
 export const CATEGORY_BG = {
   Food: '#2aa198',
   Entertainment: '#B0E3D3',
-  Shopping: '##CAD3E9',
+  Shopping: '##268bd2',
   Others: '#E1D3EE',
+  // Commuite: '#657b83',
 };

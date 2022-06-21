@@ -13,6 +13,7 @@ export const tripSlice = createSlice({
     },
     addExpense: (state, action) => {
       const tripId = action.payload.tripId;
+
       state.trips = state.trips.map(trip => {
         if (trip.id === tripId) {
           trip.expenses = [...trip.expenses, action.payload.expense];

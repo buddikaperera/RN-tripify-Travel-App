@@ -109,3 +109,43 @@ const App = () => {
 };
 
 export default App;
+
+
+
+calling redux funcations
+
+
+  const dispatch = useDispatch(); ///set something in the redux store call varible in dispatch 
+
+
+  const expens = {
+      id: Date.now(),
+      title,
+      amount,
+      category,
+    };
+
+    const data = {
+      tripId: selectedTrip.id,
+      expens,
+    };
+
+    dispatch(addExpense(data));
+
+
+
+ const handleAddTrip = () => {
+    const tripData = {
+      id: Date.now(),
+      place,
+      country,
+      banner: placeBanner,
+      expenses: [],
+    };
+
+    dispatch(addTrip(tripData));
+  };
+
+
+
+usesecltor will get the data from the store

@@ -7,9 +7,7 @@ const AddButton = props => {
   return (
     <TouchableOpacity onPress={onPress}>
       <View style={styles.addButton}>
-        <Text style={styles.buttonText}>
-          {buttonText ? buttonText : 'ADD+'}
-        </Text>
+        <Text style={styles.buttonText}>{buttonText ? buttonText : 'ADD'}</Text>
       </View>
     </TouchableOpacity>
   );

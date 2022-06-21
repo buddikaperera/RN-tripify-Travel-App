@@ -13,6 +13,7 @@ import {COLORS} from '../theme/theme';
 import ScreenWrapper from '../components/common/ScreenWrapper';
 import ExpenseCard from '../components/common/trip/ExpenseCard';
 import EmptyTripExpenses from '../components/EmptyTripExpenses';
+import {useSelector} from 'react-redux';
 
 const MOCKDATA = [
   {
@@ -52,6 +53,16 @@ const TripExpenses = ({navigation, route}) => {
   const selectedTrip = route.params;
 
   console.log(selectedTrip);
+
+  const expenses = useSelector(state => {
+    const trips = state.trips.trips;
+    const expensesToBeShown = trips.filter(trip => trip.id === selectedTrip.id);
+
+    if (expensesToBeShown.length > 0) {
+      return expensesToBeShown[0].expenses;
+    }
+    return [];
+  });
   return (
     <ScreenWrapper>
       <View>
@@ -73,6 +84,7 @@ const TripExpenses = ({navigation, route}) => {
         <View style={styles.flatListContainer}>
           <FlatList
             data={MOCKDATA}
+            //data={expenses}
             keyExtractor={item => item.id}
             showsVerticalScrollIndicator={false}
             ListEmptyComponent={<EmptyTripExpenses />}
@@ -107,6 +119,7 @@ const styles = StyleSheet.create({
   banner: {
     height: 210,
     width: '125%',
+
     resizeMode: 'cover',
   },
   bannerConatiner: {

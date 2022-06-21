@@ -5,6 +5,8 @@ import BackButton from '../components/common/BackButton';
 import ScreenWrapper from '../components/common/ScreenWrapper';
 import {COLORS} from '../theme/theme';
 import AddButton from '../components/common/AddButton';
+import {useDispatch} from 'react-redux';
+import {addTrip} from '../redux/slice/trips';
 
 const AddTrip = ({navigation}) => {
   const [placeBanner, setPlaceBanner] = useState('');
@@ -14,6 +16,21 @@ const AddTrip = ({navigation}) => {
   useEffect(() => {
     setPlaceBanner(RANDOM_THUMBNAIL());
   }, []);
+
+  const dispatch = useDispatch();
+
+  const handleAddTrip = () => {
+    const tripData = {
+      id: Date.now(),
+      place,
+      country,
+      banner: placeBanner,
+      expenses: [],
+    };
+
+    dispatch(addTrip(tripData));
+    navigation.navigate('Home');
+  };
 
   return (
     <ScreenWrapper>
@@ -48,10 +65,7 @@ const AddTrip = ({navigation}) => {
           </View>
         </View>
 
-        <AddButton
-          buttonText="ADD TRIP"
-          onPress={() => navigation.navigate('Home')}
-        />
+        <AddButton buttonText="ADD TRIP" onPress={handleAddTrip} />
       </View>
     </ScreenWrapper>
   );
@@ -76,15 +90,16 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   form: {
-    marginVertical: 12,
+    marginVertical: 5,
+    marginBottom: 0,
   },
-  formItem: {marginVertical: 6},
-  formItem2: {marginVertical: 3},
+  formItem: {marginVertical: 4},
+  formItem2: {marginVertical: 2},
   input: {
     backgroundColor: COLORS.ORANGE,
     marginTop: 25,
     fontSize: 16,
-    padding: 12,
+    padding: 8,
     borderRadius: 18,
   },
   subHeading: {
