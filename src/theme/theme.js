@@ -1,6 +1,7 @@
 export const COLORS = {
   BACKOUND: '#F9F4F3',
-  TEXT: '#677987',
+  FADE_TXT: '#677987',
+  TEXT: '#2F4858',
   GRARY2: '#e7e7e8',
   BUTTON: '#ED5565',
   ORANGE: '#F6A742',
@@ -12,4 +13,26 @@ export const COLORS = {
   WHITE: '#FFF',
   BLACK: 'rgba(0,0,0,0.8)',
   PEACH: '#FF8083',
+  BASE01: '#073642',
+  BASE02: '#586e75',
+  BASE03: '#657b83',
+  BASE04: '#839496',
+  BASE05: '#93a1a1',
+  BASE06: '#eee8d5',
+  BASE07: '#fdf6e3',
+  BASE08: '#dc322f',
+  BASE09: '#cb4b16',
+  BASE10: '#b58900',
+  BASE11: '#859900',
+  cyan: '#2aa198',
+  blue: '#268bd2',
+  violet: '#6c71c4',
+  magenta: '#d33682',
+};
+
+export const CATEGORY_BG = {
+  Food: '#2aa198',
+  Entertainment: '#B0E3D3',
+  Shopping: '##CAD3E9',
+  Others: '#E1D3EE',
 };

@@ -2,16 +2,16 @@ import {Image, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import {IMAGES} from '../assets/assets';
 
-const EmptyList = () => {
+const EmptyTripExpenses = () => {
   return (
     <View style={styles.emptyList}>
-      <Image source={IMAGES.EMPTY_LIST} style={styles.banner} />
-      <Text style={styles.message}>No data found </Text>
+      <Image source={IMAGES.EMPTY_TRIP_EXPENSES} style={styles.banner} />
+      <Text style={styles.message}>Empty Trip expenses found </Text>
     </View>
   );
 };
 
-export default EmptyList;
+export default EmptyTripExpenses;
 
 const styles = StyleSheet.create({
   banner: {

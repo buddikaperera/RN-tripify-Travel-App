@@ -81,12 +81,7 @@ const Home = ({navigation}) => {
           ListEmptyComponent={<EmptyList />}
           renderItem={({item}) => (
             <TouchableOpacity
-              onPress={() =>
-                navigation.navigate('AddExpenses', {
-                  itemId: 86,
-                  otherParam: 'anything you want here',
-                })
-              }>
+              onPress={() => navigation.navigate('TripExpenses', item)}>
               <View style={styles.tripCard}>
                 <Image source={item.banner} style={styles.tripBanner} />
                 <Text style={styles.place}>{item.place}</Text>

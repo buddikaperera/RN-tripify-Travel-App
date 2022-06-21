@@ -1,12 +1,101 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  TouchableOpacity,
+  FlatList,
+} from 'react-native';
 import React from 'react';
-import ScreenWrapper from '../components/common/ScreenWrapper';
 
-const TripExpenses = ({navigation}) => {
+import BackButton from '../components/common/BackButton';
+import {COLORS} from '../theme/theme';
+import ScreenWrapper from '../components/common/ScreenWrapper';
+import ExpenseCard from '../components/common/trip/ExpenseCard';
+import EmptyTripExpenses from '../components/EmptyTripExpenses';
+
+const MOCKDATA = [
+  {
+    id: 1,
+    title: 'Travelling',
+    category: 'Food',
+    amount: 1255,
+  },
+  {
+    id: 2,
+    title: 'Rock Climbing',
+    category: 'Entertainment',
+    amount: 534,
+  },
+
+  {
+    id: 3,
+    title: 'Travelling',
+    category: 'Others',
+    amount: 345,
+  },
+  {
+    id: 4,
+    title: 'Shopping Items ',
+    category: 'Food',
+    amount: 345,
+  },
+  {
+    id: 5,
+    title: 'DJ Parties',
+    category: 'Entertainment',
+    amount: 534,
+  },
+];
+
+const TripExpenses = ({navigation, route}) => {
+  const selectedTrip = route.params;
+
+  console.log(selectedTrip);
   return (
     <ScreenWrapper>
       <View>
-        <Text>TripExpenses</Text>
+        <BackButton onPress={() => navigation.goBack()} />
+        <View style={styles.bannerConatiner}>
+          <Image source={selectedTrip.banner} style={styles.banner} />
+          <View style={styles.placeConatiner}>
+            <Text style={styles.place}>{selectedTrip.place}</Text>
+          </View>
+        </View>
+        <View style={styles.textBtn}>
+          <Text style={styles.subHeading}>Expenses</Text>
+          <TouchableOpacity
+            onPress={() => navigation.navigate('AddExpenses', selectedTrip)}>
+            <Text style={styles.buttonText}>Add Expense</Text>
+          </TouchableOpacity>
+        </View>
+
+        <View style={styles.flatListContainer}>
+          <FlatList
+            data={MOCKDATA}
+            keyExtractor={item => item.id}
+            showsVerticalScrollIndicator={false}
+            ListEmptyComponent={<EmptyTripExpenses />}
+            renderItem={({item}) => {
+              return <ExpenseCard expense={item} />;
+            }}
+          />
+        </View>
+
+        {/* <View style={styles.flatListContainer}>
+          / <FlatList
+            data={MOCKDATA}
+         
+            legacyImplementation={false}
+            renderItem={({item}) => <ExpenseCard expense={item} />}
+           
+            keyExtractor={item => item.id}
+            numColumns={1}
+           
+            scrollEnabled={true}
+            ListEmptyComponent={<EmptyTripExpenses />}
+         />
+        </View>*/}
       </View>
     </ScreenWrapper>
   );
@@ -14,4 +103,50 @@ const TripExpenses = ({navigation}) => {
 
 export default TripExpenses;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  banner: {
+    height: 210,
+    width: '125%',
+    resizeMode: 'cover',
+  },
+  bannerConatiner: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    position: 'relative',
+  },
+  buttonText: {
+    color: COLORS.ORANGE,
+    fontWeight: '700',
+  },
+  flatListContainer: {
+    marginBottom: 120,
+    height: 420,
+  },
+  placeConatiner: {
+    backgroundColor: COLORS.WHITE,
+    minWidth: '50%',
+    paddingVertical: 10,
+    borderRadius: 18,
+    position: 'absolute',
+    bottom: -20,
+  },
+  place: {
+    textAlign: 'center',
+    fontSize: 15,
+    fontWeight: '700',
+    color: COLORS.ORANGE,
+  },
+  textBtn: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: 32,
+    marginBottom: 24,
+  },
+  subHeading: {
+    fontWeight: '600',
+    fontSize: 16,
+    color: COLORS.TEXT,
+  },
+});

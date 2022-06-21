@@ -1,6 +1,7 @@
 export const IMAGES = {
   TRIPIFY_BANNER: require('./images/14.png'),
   EMPTY_LIST: require('./images/emptiyList.png'),
+  EMPTY_TRIP_EXPENSES: require('./images/trip-thumnails/9.png'),
 };
 
 export const ICONS = {
