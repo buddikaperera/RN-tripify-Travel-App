@@ -27,8 +27,15 @@ npm install react-native-screens react-native-safe-area-context
 
 npm install @react-navigation/native-stack
 
+---------------downloads assets from --------------
+
 https://iconscout.com/all-assets/travel
 storyset.com
+
+create the app-navigator.js in the navigation folder
+
+export the AppNavigator and  import to app.js
+
 
 
 ********* REDUX *******
@@ -110,7 +117,7 @@ const App = () => {
 
 export default App;
 
-
+--------------------------------------------------------------------------
 
 calling redux funcations
 

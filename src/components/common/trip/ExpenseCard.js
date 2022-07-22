@@ -26,6 +26,7 @@ const styles = StyleSheet.create({
   amount: {
     fontSize: 16,
     fontWeight: '600',
+    marginBottom: 29,
     color: COLORS.TEXT,
   },
   expenseTitle: {

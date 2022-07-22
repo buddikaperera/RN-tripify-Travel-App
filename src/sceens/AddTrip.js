@@ -65,7 +65,7 @@ const AddTrip = ({navigation}) => {
           </View>
         </View>
 
-        <AddButton buttonText="ADD TRIP" onPress={handleAddTrip} />
+        <AddButton buttonText={'ADD TRIP'} onPress={handleAddTrip} />
       </View>
     </ScreenWrapper>
   );

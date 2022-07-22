@@ -83,13 +83,13 @@ const TripExpenses = ({navigation, route}) => {
 
         <View style={styles.flatListContainer}>
           <FlatList
-            data={MOCKDATA}
+            data={expenses} ///MOCKDATA}
             //data={expenses}
             keyExtractor={item => item.id}
             showsVerticalScrollIndicator={false}
             ListEmptyComponent={<EmptyTripExpenses />}
             renderItem={({item}) => {
-              return <ExpenseCard expense={item} />;
+              return <ExpenseCard key={item.id} expense={item} />;
             }}
           />
         </View>
@@ -138,7 +138,7 @@ const styles = StyleSheet.create({
   },
   placeConatiner: {
     backgroundColor: COLORS.WHITE,
-    minWidth: '50%',
+    minWidth: '60%',
     paddingVertical: 10,
     borderRadius: 18,
     position: 'absolute',

@@ -3,17 +3,17 @@ import React from 'react';
 import {COLORS} from '../../theme/theme';
 
 const ScreenWrapper = ({children}) => {
-  return <View style={styles.container}>{children}</View>;
+  return <View style={styles.screenWrapper}>{children}</View>;
 };
 
 export default ScreenWrapper;
 
 const styles = StyleSheet.create({
-  container: {
-    paddingTop: Platform.OS === 'ios' ? 32 : 0,
-    paddingHorizontal: 15,
-    paddingTop: 8,
-    paddingBottom: 12,
+  screenWrapper: {
+    paddingTop: Platform.OS === 'ios' ? 30 : 0,
+    paddingHorizontal: 15, //16
+    // paddingTop: 8,
+    paddingBottom: 12, //32
     backgroundColor: COLORS.GRARY2,
     minHeight: '100%',
   },

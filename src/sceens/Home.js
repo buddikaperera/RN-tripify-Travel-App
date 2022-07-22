@@ -154,7 +154,7 @@ const styles = StyleSheet.create({
 
   listWrapper: {
     marginBottom: 120,
-    height: 420,
+    height: 310,
   },
 
   subHeading: {

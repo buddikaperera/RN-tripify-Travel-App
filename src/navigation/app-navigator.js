@@ -13,6 +13,7 @@ const Stack = createNativeStackNavigator();
 const AppNavigator = () => {
   return (
     <Stack.Navigator>
+      {/**TOP ONE IS THE FIRST SCREEN SHOULD SHOW in YOUR APP */}
       <Stack.Screen
         name="Home"
         component={Home}

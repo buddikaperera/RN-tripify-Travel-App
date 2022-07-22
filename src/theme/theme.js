@@ -28,12 +28,13 @@ export const COLORS = {
   blue: '#268bd2',
   violet: '#6c71c4',
   magenta: '#d33682',
+  pink: '##f85c70', ////border #f85c70 2px solid #f85c70
 };
 
 export const CATEGORY_BG = {
   Food: '#2aa198',
   Entertainment: '#B0E3D3',
-  Shopping: '##268bd2',
+  Shopping: '#268bd2',
   Others: '#E1D3EE',
-  // Commuite: '#657b83',
+  Commuite: '#657b83',
 };
