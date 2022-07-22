@@ -3,6 +3,7 @@ import React, {useEffect, useState} from 'react';
 import {IMAGES, RANDOM_THUMBNAIL} from '../assets/assets';
 import BackButton from '../components/common/BackButton';
 import ScreenWrapper from '../components/common/ScreenWrapper';
+import KeybaordAvoidingWrapper from '../components/common/KeybaordAvoidingWrapper';
 import {COLORS} from '../theme/theme';
 import AddButton from '../components/common/AddButton';
 import {useDispatch} from 'react-redux';
@@ -34,39 +35,42 @@ const AddTrip = ({navigation}) => {
 
   return (
     <ScreenWrapper>
-      <View style={styles.addTripWrapper}>
-        <View>
-          <BackButton onPress={() => navigation.goBack()} />
-          <View style={styles.bannerContainer}>
-            <Image
-              source={require('../assets/images/16.png')}
-              style={styles.banner}
-            />
-          </View>
-          <View style={styles.form}>
-            <View style={styles.formItem}>
-              <Text style={styles.subHeading}>Where on Earth?</Text>
-              <TextInput
-                value={place}
-                onChangeText={value => setPlace(value)}
-                style={styles.input}
+      <KeybaordAvoidingWrapper>
+        <View style={styles.addTripWrapper}>
+          <View>
+            <BackButton onPress={() => navigation.goBack()} />
+            <View style={styles.bannerContainer}>
+              <Image
+                source={require('../assets/images/16.png')}
+                style={styles.banner}
               />
             </View>
-          </View>
-          <View style={styles.form}>
-            <View style={styles.formItem2}>
-              <Text style={styles.subHeading}>Which country?</Text>
-              <TextInput
-                value={country}
-                onChangeText={value => setCountry(value)}
-                style={styles.input}
-              />
+            <View style={styles.form}>
+              <View style={styles.formItem}>
+                <Text style={styles.subHeading}>Where on Earth?</Text>
+                <TextInput
+                  value={place}
+                  onChangeText={value => setPlace(value)}
+                  style={styles.input}
+                />
+              </View>
             </View>
+            <View style={styles.form}>
+              <View style={styles.formItem2}>
+                <Text style={styles.subHeading}>Which country?</Text>
+                <TextInput
+                  value={country}
+                  onChangeText={value => setCountry(value)}
+                  style={styles.input}
+                />
+              </View>
+            </View>
+          </View>
+          <View style={{paddingTop: 92}}>
+            <AddButton buttonText={'ADD TRIP'} onPress={handleAddTrip} />
           </View>
         </View>
-
-        <AddButton buttonText={'ADD TRIP'} onPress={handleAddTrip} />
-      </View>
+      </KeybaordAvoidingWrapper>
     </ScreenWrapper>
   );
 };

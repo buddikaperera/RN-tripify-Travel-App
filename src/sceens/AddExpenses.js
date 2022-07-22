@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import React, {useState} from 'react';
 import ScreenWrapper from '../components/common/ScreenWrapper';
+import KeybaordAvoidingWrapper from '../components/common/KeybaordAvoidingWrapper';
 import BackButton from '../components/common/BackButton';
 import AddButton from '../components/common/AddButton';
 import {IMAGES} from '../assets/assets';
@@ -49,59 +50,63 @@ const AddExpenses = ({navigation, route}) => {
 
   return (
     <ScreenWrapper>
-      <View style={styles.addExpenseWrapper}>
-        <View>
-          <BackButton onPress={() => navigation.goBack()} />
-          <View style={styles.bannerContainer}>
-            <Image source={IMAGES.ADD_EXPENSE_BANNER} style={styles.banner} />
-            <View style={styles.subHeadingContainer}>
-              <Text style={styles.subHeading}>Add new Expense</Text>
+      <KeybaordAvoidingWrapper>
+        <View style={styles.addExpenseWrapper}>
+          <View>
+            <BackButton onPress={() => navigation.goBack()} />
+            <View style={styles.bannerContainer}>
+              <Image source={IMAGES.ADD_EXPENSE_BANNER} style={styles.banner} />
+              <View style={styles.subHeadingContainer}>
+                <Text style={styles.subHeading}>Add new Expense</Text>
+              </View>
             </View>
           </View>
-        </View>
-        <View style={styles.form}>
-          <View style={styles.formItem}>
-            <Text style={styles.label}>For What?</Text>
-            <TextInput
-              value={title}
-              onChangeText={value => setTitle(value)}
-              style={styles.input}
-            />
-          </View>
-          <View style={styles.formItem}>
-            <Text style={styles.label}>How much?</Text>
-            <TextInput
-              value={amount}
-              onChangeText={value => setAmount(Number(value))}
-              style={styles.input}
-            />
-          </View>
-          <View style={styles.formItem}>
-            <Text style={styles.label}>Category </Text>
-            <View style={styles.categoryOptions}>
-              {CATEGORIES.map((cat, index) => (
-                <TouchableOpacity
-                  key={index}
-                  style={{
-                    ...styles.category,
-                    backgroundColor:
-                      category === cat ? COLORS.BASE08 : COLORS.WHITE,
-                  }}
-                  onPress={() => setCategory(cat)}>
-                  <Text
+          <View style={styles.form}>
+            <View style={styles.formItem}>
+              <Text style={styles.label}>For What?</Text>
+              <TextInput
+                value={title}
+                onChangeText={value => setTitle(value)}
+                style={styles.input}
+              />
+            </View>
+            <View style={styles.formItem}>
+              <Text style={styles.label}>How much?</Text>
+              <TextInput
+                value={amount}
+                onChangeText={value => setAmount(Number(value))}
+                style={styles.input}
+              />
+            </View>
+            <View style={styles.formItem}>
+              <Text style={styles.label}>Category </Text>
+              <View style={styles.categoryOptions}>
+                {CATEGORIES.map((cat, index) => (
+                  <TouchableOpacity
+                    key={index}
                     style={{
-                      ...styles.categoryLabel,
-                      color: category === cat ? COLORS.WHITE : COLORS.BLACK,
-                    }}>
-                    {cat}
-                  </Text>
-                </TouchableOpacity>
-              ))}
+                      ...styles.category,
+                      backgroundColor:
+                        category === cat ? COLORS.BASE08 : COLORS.WHITE,
+                    }}
+                    onPress={() => setCategory(cat)}>
+                    <Text
+                      style={{
+                        ...styles.categoryLabel,
+                        color: category === cat ? COLORS.WHITE : COLORS.BLACK,
+                      }}>
+                      {cat}
+                    </Text>
+                  </TouchableOpacity>
+                ))}
+              </View>
             </View>
           </View>
+          <View style={{paddingTop: 1}}>
+            <AddButton onPress={handleExpenseAdded} />
+          </View>
         </View>
-        <AddButton onPress={handleExpenseAdded} />
-      </View>
+      </KeybaordAvoidingWrapper>
     </ScreenWrapper>
   );
 };
@@ -142,6 +147,10 @@ const styles = StyleSheet.create({
 
     flexWrap: 'wrap',
     marginTop: 12,
+  },
+  container: {
+    flex: 1,
+    alignItems: 'center',
   },
   form: {
     marginVertical: 12,

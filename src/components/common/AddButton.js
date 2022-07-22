@@ -20,6 +20,7 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.PEACH,
     paddingVertical: 15,
     borderRadius: 18,
+
     display: 'flex',
     alignItems: 'center',
   },

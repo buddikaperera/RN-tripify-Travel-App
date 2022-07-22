@@ -11,11 +11,12 @@ import React from 'react';
 import BackButton from '../components/common/BackButton';
 import {COLORS} from '../theme/theme';
 import ScreenWrapper from '../components/common/ScreenWrapper';
+import KeybaordAvoidingWrapper from '../components/common/KeybaordAvoidingWrapper';
 import ExpenseCard from '../components/common/trip/ExpenseCard';
 import EmptyTripExpenses from '../components/EmptyTripExpenses';
 import {useSelector} from 'react-redux';
 
-const MOCKDATA = [
+/*const MOCKDATA = [
   {
     id: 1,
     title: 'Travelling',
@@ -48,6 +49,7 @@ const MOCKDATA = [
     amount: 534,
   },
 ];
+*/
 
 const TripExpenses = ({navigation, route}) => {
   const selectedTrip = route.params;
@@ -65,36 +67,37 @@ const TripExpenses = ({navigation, route}) => {
   });
   return (
     <ScreenWrapper>
-      <View>
-        <BackButton onPress={() => navigation.goBack()} />
-        <View style={styles.bannerConatiner}>
-          <Image source={selectedTrip.banner} style={styles.banner} />
-          <View style={styles.placeConatiner}>
-            <Text style={styles.place}>{selectedTrip.place}</Text>
+      <KeybaordAvoidingWrapper>
+        <View>
+          <BackButton onPress={() => navigation.goBack()} />
+          <View style={styles.bannerConatiner}>
+            <Image source={selectedTrip.banner} style={styles.banner} />
+            <View style={styles.placeConatiner}>
+              <Text style={styles.place}>{selectedTrip.place}</Text>
+            </View>
           </View>
-        </View>
-        <View style={styles.textBtn}>
-          <Text style={styles.subHeading}>Expenses</Text>
-          <TouchableOpacity
-            onPress={() => navigation.navigate('AddExpenses', selectedTrip)}>
-            <Text style={styles.buttonText}>Add Expense</Text>
-          </TouchableOpacity>
-        </View>
+          <View style={styles.textBtn}>
+            <Text style={styles.subHeading}>Expenses</Text>
+            <TouchableOpacity
+              onPress={() => navigation.navigate('AddExpenses', selectedTrip)}>
+              <Text style={styles.buttonText}>Add Expense</Text>
+            </TouchableOpacity>
+          </View>
 
-        <View style={styles.flatListContainer}>
-          <FlatList
-            data={expenses} ///MOCKDATA}
-            //data={expenses}
-            keyExtractor={item => item.id}
-            showsVerticalScrollIndicator={false}
-            ListEmptyComponent={<EmptyTripExpenses />}
-            renderItem={({item}) => {
-              return <ExpenseCard key={item.id} expense={item} />;
-            }}
-          />
-        </View>
+          <View style={styles.flatListContainer}>
+            <FlatList
+              data={expenses} ///MOCKDATA}
+              //data={expenses}
+              keyExtractor={item => item.id}
+              showsVerticalScrollIndicator={false}
+              ListEmptyComponent={<EmptyTripExpenses />}
+              renderItem={({item}) => {
+                return <ExpenseCard key={item.id} expense={item} />;
+              }}
+            />
+          </View>
 
-        {/* <View style={styles.flatListContainer}>
+          {/* <View style={styles.flatListContainer}>
           / <FlatList
             data={MOCKDATA}
          
@@ -108,7 +111,8 @@ const TripExpenses = ({navigation, route}) => {
             ListEmptyComponent={<EmptyTripExpenses />}
          />
         </View>*/}
-      </View>
+        </View>
+      </KeybaordAvoidingWrapper>
     </ScreenWrapper>
   );
 };
